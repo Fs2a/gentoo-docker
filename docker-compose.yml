@@ -1,10 +1,10 @@
 # @author Simon de Hartog <simon@fs2a.pro>
-# @copyright Fs2a Ltd. (c) 2019
-# vim:set ts=2 sw=2 expandtab:
+# @copyright Fs2a Ltd. (c) 2022
+# vim:set ts=2 sw=2 et:
 ---
-version: "3"
-services:
+version: "3.2"
 
+services:
   bld:
     build: bld
     hostname: bld
@@ -23,6 +23,12 @@ services:
     volumes:
       - "${PWD}/../pkgs:/opt/binpkgs:ro"
       - "/usr/portage:/usr/portage:ro"
+
+  selinux:
+    build: selinux
+    command: sleep infinity
+    hostname: selinux
+    image: "fs2a/selinux"
 
   ubuntubase:
     build: ubuntubase
